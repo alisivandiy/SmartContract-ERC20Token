@@ -84,7 +84,6 @@ contract('DappToken' , function(accounts) {
         }).then(function(receipt) {
           return tokenInstance.balanceOf(fromAccount);
         }).then(function(blnce) {
-          console.log(blnce.toNumber());
           return  tokenInstance.approve(spendingAccount  , 10  , { from : fromAccount });
           // Approve spendingAccount to spend 10 tokens from fromAccount
         }).then(function(receipt) {
@@ -107,7 +106,6 @@ contract('DappToken' , function(accounts) {
           assert.equal(balance.toNumber() , 90 , 'deducts the amount from the sending account');
           return tokenInstance.balanceOf(toAccount);
         }).then(function(balancee) {
-          console.log(balancee.toNumber());
           assert.equal(balancee.toNumber() , 10 , 'adds the amount from the receiving account');
           return tokenInstance.allowance(fromAccount , spendingAccount);
         }).then(function(allowance) {
