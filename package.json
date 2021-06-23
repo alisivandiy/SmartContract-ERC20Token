@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "run": "echo \"Error: no test specified\" && exit 1",
+    "init": "truffle init",
+    "migrate": "truffle migrate --reset",
+    "console": "truffle console",
+    "test": "truffle test",
+    "network": "truffle migrate --network development"
+  },
+  "author": "ali sivandiy",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "solc": "^0.8.5",
+    "truffle": "^5.3.11",
+    "web3": "^1.3.6"
+  }
+}
