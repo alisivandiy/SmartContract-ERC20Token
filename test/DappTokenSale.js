@@ -45,7 +45,6 @@ contract('DappTokenSale' , function(accounts) {
             assert.equal(amount.toNumber() , numberOfTokens , 'increments the number of tokens sold');
             return tokenInstance.balanceOf(buyer);
         }).then(function(balance) {
-            console.log(balance.toNumber());
             assert.equal(balance.toNumber() , numberOfTokens);
             return tokenInstance.balanceOf(tokenSaleInstance.address);  
         }).then(function(blnce){
@@ -57,5 +56,26 @@ contract('DappTokenSale' , function(accounts) {
         }).then(assert.fail).catch(function(error){
             assert(error.message.indexOf('revert') >= 0 , 'cannot purchase more token available');
         });
+    });
+
+    it('ends token sale' , function() {
+        return DappToken.deployed().then(function(instance) {
+            tokenInstance = instance;
+            return DappTokenSale.deployed();
+        }).then(function(instance) {
+            tokenSaleInstance = instance;
+            return tokenSaleInstance.endSale({ from : buyer });
+        }).then(assert.fail).catch(function(error) {
+            assert(error.message.indexOf('revert') >= 0 , 'must be admin to end sale');
+            return tokenSaleInstance.endSale({ from : admin });
+        }).then(function(receipt) {
+            return  tokenInstance.balanceOf(admin);
+        }).then(function(balance) {
+            assert.equal(balance.toNumber() , 999980 , 'returns all unsold dapp token to admin');
+            return tokenSaleInstance.tokenPrice();
+        }).then(function(price) {
+            console.log(price.toNumber())
+            assert.equal(price , 0 , 'token price was reset');
+        })
     });
 });

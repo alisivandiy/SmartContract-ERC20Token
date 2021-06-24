@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.2 <0.9.0;
+pragma solidity >=0.6.0 < 0.9.0;
 
 import  "./DappToken.sol";
 
@@ -27,5 +27,11 @@ contract DappTokenSale {
         require(tokenContract.transfer(msg.sender , _numberOfTokens));
         tokensSold += _numberOfTokens;
         emit Sell(msg.sender , _numberOfTokens);
+    }
+
+    function endSale() public {
+        require(msg.sender == admin);
+        require(tokenContract.transfer(admin , tokenContract.balanceOf(address(this))));
+        selfdestruct(payable(admin));
     }
 }
