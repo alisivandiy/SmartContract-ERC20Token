@@ -9,10 +9,12 @@ contract('DappTokenSale' , function(accounts) {
     var tokenPrice = 1000000000000000; // in wei
     var tokensAvailable = 750000;
     var numberOfTokens;
+    var tokenPrice2;
 
     it('initializes the contract with the correct values', function() {
         return DappTokenSale.deployed().then(function(instance) {
             tokenSaleInstance = instance;
+            tokenPrice2 = 0;
             return tokenSaleInstance.address;
         }).then(function(address) {
             assert.notEqual(address , 0x0 , 'has contract address');
@@ -72,10 +74,9 @@ contract('DappTokenSale' , function(accounts) {
             return  tokenInstance.balanceOf(admin);
         }).then(function(balance) {
             assert.equal(balance.toNumber() , 999980 , 'returns all unsold dapp token to admin');
-            return tokenSaleInstance.tokenPrice();
+            return tokenPrice2;
         }).then(function(price) {
-            console.log(price.toNumber())
             assert.equal(price , 0 , 'token price was reset');
-        })
+        });
     });
 });

@@ -2,13 +2,14 @@
   "name": "project",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "truffle.js",
   "scripts": {
     "run": "echo \"Error: no test specified\" && exit 1",
     "init": "truffle init",
     "migrate": "truffle migrate --reset",
     "console": "truffle console",
     "test": "truffle test",
+    "dev" : "lite-server" ,
     "network": "truffle migrate --network development"
   },
   "author": "ali sivandiy",
