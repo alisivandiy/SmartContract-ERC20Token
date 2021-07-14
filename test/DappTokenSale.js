@@ -1,5 +1,7 @@
 var DappToken = artifacts.require("./DappToken");
 var DappTokenSale = artifacts.require("./DappTokenSale");
+var asdgjasjkdljashdlash = 0;
+var asdasdjhasjd = 0;
 
 contract('DappTokenSale' , function(accounts) {
     var tokenSaleInstance;
