@@ -21,6 +21,7 @@
     "@harmony-js/crypto": "^0.1.56",
     "@harmony-js/utils": "^0.1.56",
     "@openzeppelin/contracts": "^4.1.0",
+    "axios": "^0.21.1",
     "fs": "0.0.1-security",
     "solc": "^0.8.5",
     "truffle": "^5.3.11",
